@@ -250,7 +250,7 @@ This project will guide students through the complete lifecycle of setting up a 
         
         Give it a couple seconds for the pods to start, and then connect to localhost:8080 in your browser and you’ll see the azure-vote application running on your kubernetes cluster:
         
-        ![Screenshot 2024-07-23 at 1.15.51 PM.png](Kubernetes%20from%20scratch%209c9882cbc12d466f83f6f7c6e5dfe236/Screenshot_2024-07-23_at_1.15.51_PM.png)
+        ![demo application home page]](<assets/microservecs-demo app.png>)
         
 - Installing Kubernetes Dashboard
     1. Add the helm chart repo
@@ -273,8 +273,7 @@ This project will guide students through the complete lifecycle of setting up a 
     # Create a Bearer token
     kubectl -n NAMESPACE create token SERVICE_ACCOUNT
     ```
-    
-    ![Screenshot 2024-07-23 at 1.56.46 PM.png](Kubernetes%20from%20scratch%209c9882cbc12d466f83f6f7c6e5dfe236/Screenshot_2024-07-23_at_1.56.46_PM.png)
+    ![k8s-dashboard](assets/k8s-dashboard.png)
     
 - Advanced Kubernetes Configuration
     - Control Plan Isolation
@@ -290,7 +289,7 @@ This project will guide students through the complete lifecycle of setting up a 
         
         To simulate Importance of Control Plane isolation we will allow scheduling of pods on the control plane node and try to fetch Cluster specific data from the control plane node.
         
-        1. By default, your cluster will not schedule Pods on the control plane nodes for security reasons. If you want to be able to schedule Pods on the control plane nodes, for example for a single machine Kubernetes cluster, run:
+        7. By default, your cluster will not schedule Pods on the control plane nodes for security reasons. If you want to be able to schedule Pods on the control plane nodes, for example for a single machine Kubernetes cluster, run:
             
             ```bash
             kubectl taint nodes --all node-role.kubernetes.io/control-plane:NoSchedule-
@@ -312,7 +311,7 @@ This project will guide students through the complete lifecycle of setting up a 
             > kubectl label nodes --all node.kubernetes.io/exclude-from-external-load-balancers-
             > ```
             > 
-        2. Let’s now create a pod to get control plane resources
+        8. Let’s now create a pod to get control plane resources
             
             ```bash
             apiVersion: v1
@@ -340,7 +339,7 @@ This project will guide students through the complete lifecycle of setting up a 
             kubectl apply -f malicious-pod.yaml
             ```
             
-        3. Observe the Impact
+        9. Observe the Impact
             
             Monitor the logs of the malicious pod to see if it can access the API server.
             
@@ -415,7 +414,7 @@ This project will guide students through the complete lifecycle of setting up a 
             100   180  100   180    0     0   6273      0 --:--:-- --:--:-- --:--:--  6428
             ```
             
-        4. Reapply Control Plane Isolation (Best Practice)
+        10. Reapply Control Plane Isolation (Best Practice)
             
             Reapply the taint to the control plane node to prevent scheduling of pods.
             
@@ -434,7 +433,7 @@ This project will guide students through the complete lifecycle of setting up a 
         
         Topology
         
-        ![kubeadm-ha-topology-stacked-etcd.svg](Kubernetes%20from%20scratch%209c9882cbc12d466f83f6f7c6e5dfe236/kubeadm-ha-topology-stacked-etcd.svg)
+        ![alt text](assets/kubeadm-ha-topology-stacked-etcd.svg)
         
         1. create 5 nodes on azure vm by editing the terrform code vm count from 3 → 5
         2. the setup will have 2 control plane nodes and 3 worker nodes
@@ -2248,7 +2247,7 @@ This project will guide students through the complete lifecycle of setting up a 
         > compare the values with a pre-existing terraform plan -out file
         > 
         
-        [lmao.txt](Kubernetes%20from%20scratch%209c9882cbc12d466f83f6f7c6e5dfe236/lmao.txt)
+        [Terraform plan file reference file](assets/terraform-plan.txt)
         
     - **Checkpoint 1.3: Terraform Apply**
         - **Command:** `terraform apply`
